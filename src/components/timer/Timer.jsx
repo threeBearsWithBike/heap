@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import './Timer.css';
 
 const Timer = ({ hours = 0, minutes = 0, seconds = 0}) => {
     const [pause, setPause] = useState(false);
@@ -33,8 +34,8 @@ const Timer = ({ hours = 0, minutes = 0, seconds = 0}) => {
         return () => clearInterval(timerID);
     })
     return (
-        <div>
-            <p>
+        <div className="Timer">
+            <p className="Timer-table">
                 <strong>
                 {
                 `${h.toString().padStart(2, 0)} : 
