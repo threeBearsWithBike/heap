@@ -14,11 +14,11 @@ const Timer = ({ hours = 0, minutes = 0, seconds = 0}) => {
         if (h === 0 && m === 0 && s === 0) {
             setOver(true);
         } else if (m === 0 && s === 0) {
-            setTime([h - 1, m = 59, s = 59]);
+            setTime(prev => [prev[0] - 1, 59, 59]);
         } else if (s === 0) {
-            setTime([h, m - 1, 59]);
+            setTime(prev => [prev[0], prev[1] - 1, 59]);
         } else {
-            setTime([h, m, s - 1]);
+            setTime(prev => [prev[0], prev[1], prev[2] - 1]);
         }
     }
 
@@ -45,7 +45,7 @@ const Timer = ({ hours = 0, minutes = 0, seconds = 0}) => {
             </p>
             <h2>{ over && "Time's UP!" }</h2>
             <p>
-                <button onClick={() => setPause(!pause)}>
+                <button onClick={() => setPause(prev => !prev)}>
                     { pause ? 'Resume' : 'Pause' }
                 </button>
                 <button onClick={() => reset()}>Restart</button>
